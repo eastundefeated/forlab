@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+<title>添加书籍</title>
+   <style>
+body {
+    width: 800px;
+    margin: 0px auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 20px;
+}
+
+input{
+    font-size:18px;
+    float:right;
+	margin-right:40px;
+}
+
+#Content{
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+    height:180px;
+	width:350px;
+    background:#CCC;
+	padding-top:40px;
+	padding-left:40px;
+	padding-right:60px;
+	padding-bottom:40px;
+}
+
+.orange {
+	width:100px;
+	height:30px;
+	font-size:18px;
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+
+a {
+	float:right;
+	margin-right:30px;
+	text-decoration:none;
+}
+
+h1 {
+	color:green;
+	font-family: 'trebuchet MS', 'Lucida sans', Arial;
+	text-align:center;
+}
+
+h2 {
+	color:red;
+	text-align:center;
+}
+
+h3 {
+	float:left;
+}
+
+h4 {
+	color:red;
+}
+.clear{clear:both;}
+</style>
+</head>
+<body>
+<h1>图书管理系统</h1>
+<h3><a href = "/index">返回首页</a></h3>
+<div class = "clear"></div>
+<h2>{{error}}</h2>
+<form method = "POST" id = "Content">
+	姓名<input type = "text" name = "name" ><br /><br />
+	年龄<input type = "text" name = "age" ><br /><br />
+	国籍<input type = "text" name = "country" ><br /><br />
+	
+	<input class = "orange" type = "submit" value = "提交"><br />
+	<h4>Tip : 添加完的作者在下拉框最底部<h4>
+</form>
+</body>
+</html>

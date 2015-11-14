@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>查询作者</title>
+  <style>
+body {
+    width: 600px;
+    margin: 0px auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 20px;
+}
+
+input{
+	margin-top:40px;
+    font-size:23px;
+}
+
+#Content{
+	margin-top:100px;
+    height:300px;
+	width:500px;
+    background:#CC9;
+	padding:40px;
+}
+
+table {
+    width: 100%;    
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align:center;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+#Content{
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+    height:180px;
+	width:450px;
+    background:#CFF;
+	/*
+	padding-top:40px;
+	padding-left:40px;
+	padding-right:60px;
+	padding-bottom:40px;
+	*/
+}
+
+.orange {
+	width:100px;
+	height:30px;
+	font-size:23px;
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+
+h1 {
+	color:green;
+	font-family: 'trebuchet MS', 'Lucida sans', Arial;
+	text-align:center;
+}
+
+h2 {
+	color:red;
+	text-align:center;
+}
+
+h3 {
+	float:left;
+	display:block;
+}
+
+h4 {
+	text-align:center;
+	font-size:25px;
+}
+
+a {
+	text-decoration : none;
+}
+
+.clear{ clear:both;} 
+</style>
+</head>
+<body>
+<h1>图书管理系统</h1>
+<h3><a href = "/index">返回首页</a></h3>
+<div class = "clear"></div>
+<center>
+{% if not author %}
+<form method = "get" id = "Content">
+{% if error %}
+<h2>{{error}}</h2>
+{% endif %}
+<input type = "text" name = "name" placeholder = "请输入作者姓名">
+<input class = "orange" type = "submit" value = "查询">
+</form>
+{% endif %}
+{% if author %}
+<h4>作者信息</h4>
+<table class = "bordered"> 
+<tr>
+	<th>姓名</th><th>年龄</th><th>国籍</th>
+</tr>
+<tr>
+	<td>{{author.Name}}</td><td>{{author.Age}}</td><td>{{author.Country}}</td>
+</tr>
+</table>
+<table class = "bordered">
+<tr>
+	<th>写过的书</th>
+</tr>
+<br /><br />
+{% for book in books %}
+<tr>
+	<td><a href="/book_infomation/{{book.ISBN}}">{{book.Title}}</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+</center>
+</body>
+</html>

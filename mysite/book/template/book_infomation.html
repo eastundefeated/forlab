@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>书籍信息</title>
+  <style>
+body {
+    width: 800px;
+    margin: 0px auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 20px;
+}
+
+table {
+    width: 100%;    
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align:center;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+h1 {
+	color:green;
+	font-family: 'trebuchet MS', 'Lucida sans', Arial;
+}
+
+h2 {
+	color:red;
+	text-align:center;
+	
+}
+
+
+h3 {
+	display:inline;
+	float :left;
+}
+
+h4 {
+	text-align:center;
+	font-size:25px;
+}	
+
+a {
+	text-decoration : none;
+}
+
+.clear{ clear:both;} 
+</style>
+</head>
+<body>
+<center><h1>图书管理系统</h1></center>
+<h3><a href = "/index">返回首页</a></h3><br /><br />
+<div class = "clear"></div>
+{% if error %}
+<h2>{{error}}</h2>
+{% endif %}
+{% if book %}
+<center>
+<form method = "get">
+<h4>书籍信息</h4>
+<table class= "bordered" >
+<tr>
+	<th>编号</th><th>书名</th><th>作者</th><th>出版商</th><th>出版日期</th><th>价格</th><th>操作</th>
+</tr>
+<tr>
+	<td>{{book.ISBN}}</td><td>{{book.Title}}</td><td>{{book.AuthorID}}</td><td>{{book.Publisher}}</td>
+	<td>{{book.PublishDate}}</td><td>{{book.Price}}</td><td><a href="/update/{{book.ISBN}}/">更新</td>
+</tr>
+</table>
+<br />
+<h4>作者信息</h4>
+<table class = "bordered"> 
+<tr>
+	<th>姓名</th><th>年龄</th><th>国籍</th>
+</tr>
+<tr>
+	<td>{{author.Name}}</td><td>{{author.Age}}</td><td>{{author.Country}}</td>
+</tr>
+</table>
+</form>
+</center>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>更新书籍</title>
+  <style>
+
+body {
+    width: 800px;
+    margin: 0px auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 20px;
+}
+
+input {
+	font-size:18px;
+	float:right;
+	margin-right:40px;
+}
+
+select {
+	font-size:18px;
+	float:right;
+	margin-right:40px;
+}
+
+#Content{
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+    height:300px;
+	width:400px;
+    background:#CCF;
+	padding-top:40px;
+	padding-left:60px;
+	padding-right:60px;
+	padding-bottom:40px;
+	
+}
+
+h1 {
+	color:green;
+	text-align:center;
+	
+}
+
+h2 {
+	color:red;
+	text-align:center;
+}
+
+h3 {
+	float:left;
+}
+
+a {
+	text-decoration : none;
+	margin-left:90px;
+	
+}
+
+.clear{
+	clear:both;
+}
+</style>
+
+</head>
+<body>
+<h1>图书管理系统</h1>
+<h3><a href = "/index">返回首页</a></h3>
+<div class = "clear"></div>
+{% if error %}
+<h2>{{error}}</h2>
+{% endif %}
+<form method = "post" id = "Content">
+书名<input type = "text" value = "{{Title}}" readonly = true><br /><br />
+作者
+	<select name="AuthorID">
+	<option>请选择</option> 
+	{% for author in authors %}
+	<option value="{{author.Name}}">{{author.Name}}</option> 
+	{% endfor %}
+	</select> <a href = "/addauthor/update/{{ISBN}}">添加</a><br /><br />
+出版社<input type = "text" name = "publisher" value = "{{Publisher}}"><br /><br />
+出版日期<input type = "text" name = "publishdate" value = "{{PublishDate}}"><br /><br />
+价格<input type = "text" name = "price" value = "{{Price}}"><br /><br />
+<input type = "submit" value = "保存"/>
+</form>
+</body>
+</html>
